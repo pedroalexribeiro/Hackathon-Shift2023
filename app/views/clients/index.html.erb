@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h3><%= current_freelancer.clients.size %> Clients</h3>
+    </div>
+    <div class="col">
+      <%= render "clients/partials/add_client" %>
+    </div>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Last Activity</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% current_freelancer.clients.each do |client|%>
+      <tr onclick="window.location.assign('<%= (client_path(client)) %>');">
+        <th scope="row"><%= client.id %></th>
+        <td><%= client.name %></td>
+        <td><%= "12/04/23" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
