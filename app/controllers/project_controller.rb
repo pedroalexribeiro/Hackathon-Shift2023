@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
-class ClientsController < ApplicationController
-  layout 'client_view', only: %i[show]
-  before_action :set_client, only: %i[show]
+class ProjectController < ApplicationController
+  layout 'project_view', only: %i[show]
+  before_action :set_project, only: %i[show]
+  before_action :set_client
 
   def index
-    @client = Client.new
-    @clients = Client.all
+    @project = Project.new
+    @projects = Project.all
   end
 
   def new
@@ -36,10 +37,14 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:name)
+    params.require(:project).permit(:name)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 
   def set_client
-    @client = Client.find(params[:id])
+    @client = Client.find(params[:client_id])
   end
 end

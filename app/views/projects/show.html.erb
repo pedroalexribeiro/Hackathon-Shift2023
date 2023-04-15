@@ -4,7 +4,7 @@
     <h3><%= @client.projects.size %> Projects</h3>
   </div>
   <div class="col">
-    <%= render 'projects/partials/add_project' %>
+    <%= link_to 'Add Project', new_client_project, remote: true, id: 'client-inv', class: "btn btn-#{current_freelancer.clients.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
   </div>
 </div>
 

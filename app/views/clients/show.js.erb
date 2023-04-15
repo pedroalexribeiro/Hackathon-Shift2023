@@ -1,8 +1,0 @@
-$('.js-render-client').html('<%= j render "client_groups/client_groups/partials/activity" %>');
-$('body').attr('id', 'clients_show');
-$('.js-breadcrumbs').html('<%= render_breadcrumbs tag: :li, separator: "" %>');
-
-$('.js-main-menu .js-sub-menu-item.is-active').removeClass('is-active');
-current_url = window.location.href.split('<%= @client_group.id %>')[0];
-window.history.pushState({}, '', current_url + "<%= @client_group.id %>");
-$(document).trigger('ajax:complete');

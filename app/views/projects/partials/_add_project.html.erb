@@ -1,0 +1,8 @@
+<!-- Button trigger modal -->
+<!--
+<%= link_to 'Add client', new_client_path, remote: true, class: "btn btn-#{current_freelancer.clients.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
+-->
+<%= render 'projects/partials/modal' %>
+<button type="button" class="btn btn-<%="#{@client.projects.empty? ? 'secondary' : 'default'}"%> btn-xs-fixed m-xs-0" data-toggle="modal" data-target="#exampleModal">
+  Add Project
+</button>
