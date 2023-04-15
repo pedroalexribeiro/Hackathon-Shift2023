@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
   layout 'project_view', only: %i[show]
   before_action :set_project, only: %i[show]
   before_action :set_client
@@ -11,7 +11,7 @@ class ProjectController < ApplicationController
   end
 
   def new
-    @client = Client.new
+    @project = Project.new
 
     respond_to do |format|
       format.html
@@ -20,7 +20,7 @@ class ProjectController < ApplicationController
   end
 
   def create
-    service = CreateClientService.call(current_freelancer, client_params)
+    service = CreateProjectService.call(@client, project_params)
 
     if service.valid?
       @client = service.result[:value]
@@ -36,7 +36,7 @@ class ProjectController < ApplicationController
 
   private
 
-  def client_params
+  def project_params
     params.require(:project).permit(:name)
   end
 
