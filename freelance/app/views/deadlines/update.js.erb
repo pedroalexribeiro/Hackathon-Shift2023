@@ -1,0 +1,8 @@
+<% if @deadline.finalised? %>
+  $('#exampleModal').html("<%= j render ('deadlines/partials/modal') %>");
+<% else %>
+<% end %>
+
+
+
+$('#exampleModal').modal();

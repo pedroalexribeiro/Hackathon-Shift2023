@@ -1,0 +1,14 @@
+<div class="container">
+  <%= form_for(@client, url: login_index_path) do |f| %>
+    <div id="example" class="form-group">
+      <div class="form-field">
+        <%= f.text_field :access_code, autofocus: true, class: "form-control", placeholder: "X1rj!" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Log in", class: "btn btn-primary", style:"background-color: green;" %>
+      </div>
+    </div>
+  <% end %>
+</div>
+

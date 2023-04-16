@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="col visible_avatar" style="display:inline-flex;">
+      <%= image_tag @client.round_avatar, class: "avatar avatar-16 bg-light rounded-circle text-white p-3" %>
+      <span style="font-weight: bold;font-size: 20px;margin-left:10px;"><%= @client.visible_name %></span>
+    </div>
+  </div>
+  <hr class="solid">
+  <div class="row">
+    <div class="col visible_avatar" style="display:inline-flex;">
+      <i class="bi bi-file"></i>
+      <span style="font-weight: bold;font-size: 20px;margin-left:10px;"><%= @project.name %></span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="container" style="padding-left:6vh;">
+      <hr class="solid">
+      <% @project.deadlines.each do |deadline| %>
+        <div style="margin-left:2vh;">
+          <%= render "deadlines/partials/table_row", deadline: deadline %>
+        </div>
+        <hr class="solid">
+      <% end %>
+      <div class="row">
+        <%= link_to "Create Deadline", new_client_project_deadline_path(@client, @project), remote: true, class: "btn btn-primary btn-xs-fixed m-xs-0", style: "background-color: green;" %>
+      </div>
+    </div>
+  </div>
+</div>

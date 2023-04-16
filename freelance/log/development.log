@@ -1,0 +1,756 @@
+Started GET "/clients/2" for ::1 at 2023-04-16 13:59:46 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" varchar NOT NULL PRIMARY KEY, "value" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 8 pending migrations:
+
+20230415103554_create_freelancers.rb
+20230415103717_add_devise_to_freelancers.rb
+20230415104624_create_clients.rb
+20230415104726_create_projects.rb
+20230415152517_create_deadlines.rb
+20230415152545_create_notes.rb
+20230415152546_create_documents.rb
+20230415223904_create_active_storage_tables.active_storage.rb
+
+
+):
+  
+activerecord (6.1.7.3) lib/active_record/migration.rb:625:in `check_pending!'
+activerecord (6.1.7.3) lib/active_record/migration.rb:590:in `block (2 levels) in call'
+activesupport (6.1.7.3) lib/active_support/evented_file_update_checker.rb:59:in `execute'
+activerecord (6.1.7.3) lib/active_record/migration.rb:595:in `block in call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:587:in `synchronize'
+activerecord (6.1.7.3) lib/active_record/migration.rb:587:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateFreelancers (20230415103554)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.3ms)[0m  [1m[35mCREATE TABLE "freelancers" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "brand_name" varchar DEFAULT 'MesModder', "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415103554"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[36mcommit transaction[0m
+Migrating to AddDeviseToFreelancers (20230415103717)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "freelancers" ADD "email" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "freelancers" ADD "encrypted_password" varchar DEFAULT '' NOT NULL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "freelancers" ADD "reset_password_token" varchar[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "freelancers" ADD "reset_password_sent_at" datetime[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "freelancers" ADD "remember_created_at" datetime[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_freelancers_on_email" ON "freelancers" ("email")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_freelancers_on_reset_password_token" ON "freelancers" ("reset_password_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415103717"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateClients (20230415104624)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "clients" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "phonenumber" varchar, "nif" varchar, "freelancer_id" integer, "access_code" varchar, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_clients_on_freelancer_id" ON "clients" ("freelancer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415104624"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateProjects (20230415104726)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "projects" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "category" varchar, "deadline" datetime, "status" integer DEFAULT 0, "client_id" integer, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_projects_on_client_id" ON "projects" ("client_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415104726"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDeadlines (20230415152517)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "deadlines" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar, "project_id" integer NOT NULL, "status" integer DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL, CONSTRAINT "fk_rails_a3b5776644"
+FOREIGN KEY ("project_id")
+  REFERENCES "projects" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_deadlines_on_project_id" ON "deadlines" ("project_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415152517"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateNotes (20230415152545)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "notes" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "content" text, "notable_type" varchar NOT NULL, "notable_id" integer NOT NULL, "author_type" varchar NOT NULL, "author_id" integer NOT NULL, "change" boolean DEFAULT 0, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_notes_on_notable" ON "notes" ("notable_type", "notable_id")[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_notes_on_author" ON "notes" ("author_type", "author_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415152545"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateDocuments (20230415152546)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCREATE TABLE "documents" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" text, "source_type" varchar NOT NULL, "source_id" integer NOT NULL, "author_type" varchar NOT NULL, "author_id" integer NOT NULL, "created_at" datetime(6) NOT NULL, "updated_at" datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE INDEX "index_documents_on_source" ON "documents" ("source_type", "source_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_documents_on_author" ON "documents" ("author_type", "author_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415152546"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Migrating to CreateActiveStorageTables (20230415223904)
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "key" varchar NOT NULL, "filename" varchar NOT NULL, "content_type" varchar, "metadata" text, "service_name" varchar NOT NULL, "byte_size" bigint NOT NULL, "checksum" varchar NOT NULL, "created_at" datetime NOT NULL)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_blobs_on_key" ON "active_storage_blobs" ("key")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "name" varchar NOT NULL, "record_type" varchar NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" datetime NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE INDEX "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments" ("blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_attachments_uniqueness" ON "active_storage_attachments" ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE TABLE "active_storage_variant_records" ("id" integer PRIMARY KEY AUTOINCREMENT NOT NULL, "blob_id" bigint NOT NULL, "variation_digest" varchar NOT NULL, CONSTRAINT "fk_rails_993965df05"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (0.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_active_storage_variant_records_uniqueness" ON "active_storage_variant_records" ("blob_id", "variation_digest")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20230415223904"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.0ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.1ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-04-16 13:00:47.482806"], ["updated_at", "2023-04-16 13:00:47.482806"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/admin/client" for ::1 at 2023-04-16 14:03:02 +0100
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"client"}
+  Rendering layout /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/application.html.erb
+  Rendering /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/rails_admin/main/index.html.erb within layouts/rails_admin/application
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY clients.id desc LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/rails_admin/main/index.html.erb within layouts/rails_admin/application (Duration: 10.1ms | Allocations: 20555)
+[Webpacker] Compiling...
+Started GET "/clients/2" for ::1 at 2023-04-16 14:03:04 +0100
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+Completed 401 Unauthorized in 2ms (ActiveRecord: 0.0ms | Allocations: 2968)
+
+
+Started GET "/freelancers/sign_in" for ::1 at 2023-04-16 14:03:04 +0100
+Processing by Devise::SessionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.8ms | Allocations: 628)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2098)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/pedroribeiro/Projects/lancealot/freelance/public/packs
+[Webpacker] warning ../../../package.json: No license field
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(20em, 16) or calc(20em / 16)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+12 │ $fa-fw-width:          (20em / 16);
+   │                         ^^^^^^^^^
+   ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_variables.scss 12:25  @import
+    node_modules/@fortawesome/fontawesome-free/scss/solid.scss 5:9         @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 15:9         @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(4em, 3) or calc(4em / 3)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+6 │   font-size: (4em / 3);
+  │               ^^^^^^^
+  ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_larger.scss 6:15     @import
+    node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss 8:9  @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 16:9        @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(3em, 4) or calc(3em / 4)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+7 │   line-height: (3em / 4);
+  │                 ^^^^^^^
+  ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_larger.scss 7:17     @import
+    node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss 8:9  @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 16:9        @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($fa-li-width * 5, 4) or calc($fa-li-width * 5 / 4)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+6 │   margin-left: $fa-li-width * 5/4;
+  │                ^^^^^^^^^^^^^^^^^^
+  ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_list.scss 6:16        @import
+    node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss 10:9  @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 16:9         @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                        root stylesheet
+
+
+[Webpacker] Hash: 11de5b20c31be2c6f8c6
+Version: webpack 4.46.0
+Time: 5044ms
+Built at: 04/16/2023 2:03:08 PM
+                                                   Asset      Size               Chunks                         Chunk Names
+                  js/application-271cf8931bb708d2d8bb.js   121 KiB          application  [emitted] [immutable]  application
+              js/application-271cf8931bb708d2d8bb.js.map   133 KiB          application  [emitted] [dev]        application
+                  js/rails_admin-d1425ca6c49acf5466c9.js  2.45 MiB          rails_admin  [emitted] [immutable]  rails_admin
+              js/rails_admin-d1425ca6c49acf5466c9.js.map  2.56 MiB          rails_admin  [emitted] [dev]        rails_admin
+    js/vendors~actioncable-7a18723a7d6422f7448f.chunk.js  33.7 KiB  vendors~actioncable  [emitted] [immutable]  vendors~actioncable
+js/vendors~actioncable-7a18723a7d6422f7448f.chunk.js.map  26.1 KiB  vendors~actioncable  [emitted] [dev]        vendors~actioncable
+                                           manifest.json  1.31 KiB                       [emitted]              
+              media/webfonts/fa-solid-900-1551f4f6.woff2  76.4 KiB                       [emitted]              
+                media/webfonts/fa-solid-900-7a8b4f13.svg   897 KiB                       [emitted]              
+                media/webfonts/fa-solid-900-9bbb245e.eot   198 KiB                       [emitted]              
+                media/webfonts/fa-solid-900-be9ee23c.ttf   198 KiB                       [emitted]              
+               media/webfonts/fa-solid-900-eeccf4f6.woff  99.3 KiB                       [emitted]              
+Entrypoint application = js/application-271cf8931bb708d2d8bb.js js/application-271cf8931bb708d2d8bb.js.map
+Entrypoint rails_admin = js/rails_admin-d1425ca6c49acf5466c9.js js/rails_admin-d1425ca6c49acf5466c9.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 493 bytes {application} [built]
+[./app/javascript/packs/rails_admin.js] 84 bytes {rails_admin} [built]
+[./app/javascript/stylesheets/rails_admin.scss] 664 bytes {rails_admin} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/rails_admin.scss] ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/sass-loader/dist/cjs.js??ref--6-3!./app/javascript/stylesheets/rails_admin.scss 1.28 MiB {rails_admin} [built]
+    + 125 hidden modules
+
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_head.html.erb (Duration: 6131.8ms | Allocations: 45633)
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_secondary_navigation.html.erb (Duration: 1.1ms | Allocations: 859)
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_navigation.html.erb (Duration: 2.2ms | Allocations: 1557)
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_sidebar_navigation.html.erb (Duration: 3.1ms | Allocations: 5969)
+  Rendering /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/content.html.erb
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/content.html.erb (Duration: 1.6ms | Allocations: 2546)
+  Rendered layout /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/application.html.erb (Duration: 6151.4ms | Allocations: 78305)
+Completed 200 OK in 6187ms (Views: 6153.8ms | ActiveRecord: 0.8ms | Allocations: 112868)
+
+
+[Webpacker] Compiled all packs in /Users/pedroribeiro/Projects/lancealot/freelance/public/packs
+[Webpacker] warning ../../../package.json: No license field
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(20em, 16) or calc(20em / 16)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+   ╷
+12 │ $fa-fw-width:          (20em / 16);
+   │                         ^^^^^^^^^
+   ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_variables.scss 12:25  @import
+    node_modules/@fortawesome/fontawesome-free/scss/solid.scss 5:9         @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 15:9         @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(4em, 3) or calc(4em / 3)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+6 │   font-size: (4em / 3);
+  │               ^^^^^^^
+  ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_larger.scss 6:15     @import
+    node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss 8:9  @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 16:9        @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div(3em, 4) or calc(3em / 4)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+7 │   line-height: (3em / 4);
+  │                 ^^^^^^^
+  ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_larger.scss 7:17     @import
+    node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss 8:9  @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 16:9        @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+Recommendation: math.div($fa-li-width * 5, 4) or calc($fa-li-width * 5 / 4)
+
+More info and automated migrator: https://sass-lang.com/d/slash-div
+
+  ╷
+6 │   margin-left: $fa-li-width * 5/4;
+  │                ^^^^^^^^^^^^^^^^^^
+  ╵
+    node_modules/@fortawesome/fontawesome-free/scss/_list.scss 6:16        @import
+    node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss 10:9  @import
+    node_modules/rails_admin/src/rails_admin/styles/base.scss 16:9         @import
+    app/javascript/stylesheets/rails_admin.scss 1:9                        root stylesheet
+
+
+[Webpacker] Hash: 11de5b20c31be2c6f8c6
+Version: webpack 4.46.0
+Time: 3637ms
+Built at: 04/16/2023 2:03:09 PM
+                                                   Asset      Size               Chunks                         Chunk Names
+                  js/application-271cf8931bb708d2d8bb.js   121 KiB          application  [emitted] [immutable]  application
+              js/application-271cf8931bb708d2d8bb.js.map   133 KiB          application  [emitted] [dev]        application
+                  js/rails_admin-d1425ca6c49acf5466c9.js  2.45 MiB          rails_admin  [emitted] [immutable]  rails_admin
+              js/rails_admin-d1425ca6c49acf5466c9.js.map  2.56 MiB          rails_admin  [emitted] [dev]        rails_admin
+    js/vendors~actioncable-7a18723a7d6422f7448f.chunk.js  33.7 KiB  vendors~actioncable  [emitted] [immutable]  vendors~actioncable
+js/vendors~actioncable-7a18723a7d6422f7448f.chunk.js.map  26.1 KiB  vendors~actioncable  [emitted] [dev]        vendors~actioncable
+                                           manifest.json  1.31 KiB                       [emitted]              
+              media/webfonts/fa-solid-900-1551f4f6.woff2  76.4 KiB                       [emitted]              
+                media/webfonts/fa-solid-900-7a8b4f13.svg   897 KiB                       [emitted]              
+                media/webfonts/fa-solid-900-9bbb245e.eot   198 KiB                       [emitted]              
+                media/webfonts/fa-solid-900-be9ee23c.ttf   198 KiB                       [emitted]              
+               media/webfonts/fa-solid-900-eeccf4f6.woff  99.3 KiB                       [emitted]              
+Entrypoint application = js/application-271cf8931bb708d2d8bb.js js/application-271cf8931bb708d2d8bb.js.map
+Entrypoint rails_admin = js/rails_admin-d1425ca6c49acf5466c9.js js/rails_admin-d1425ca6c49acf5466c9.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 493 bytes {application} [built]
+[./app/javascript/packs/rails_admin.js] 84 bytes {rails_admin} [built]
+[./app/javascript/stylesheets/rails_admin.scss] 664 bytes {rails_admin} [built]
+[./node_modules/css-loader/dist/cjs.js?!./node_modules/postcss-loader/src/index.js?!./node_modules/sass-loader/dist/cjs.js?!./app/javascript/stylesheets/rails_admin.scss] ./node_modules/css-loader/dist/cjs.js??ref--6-1!./node_modules/postcss-loader/src??ref--6-2!./node_modules/sass-loader/dist/cjs.js??ref--6-3!./app/javascript/stylesheets/rails_admin.scss 1.28 MiB {rails_admin} [built]
+    + 125 hidden modules
+
+  Rendered layout layouts/application.html.erb (Duration: 4423.0ms | Allocations: 48936)
+Completed 200 OK in 4428ms (Views: 4426.0ms | ActiveRecord: 0.0ms | Allocations: 51749)
+
+
+Started GET "/freelancers/sign_up" for ::1 at 2023-04-16 14:03:11 +0100
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 223)
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 148)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 6.2ms | Allocations: 2214)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 11.6ms | Allocations: 5939)
+Completed 200 OK in 17ms (Views: 15.2ms | ActiveRecord: 0.0ms | Allocations: 7494)
+
+
+Started POST "/freelancers" for ::1 at 2023-04-16 14:03:17 +0100
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "freelancer"=>{"email"=>"pedro@shift.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign up"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFreelancer Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "freelancers" WHERE "freelancers"."email" = ? LIMIT ?[0m  [["email", "pedro@shift.com"], ["LIMIT", 1]]
+  [1m[36mFreelancer Create (0.3ms)[0m  [1m[32mINSERT INTO "freelancers" ("created_at", "updated_at", "email", "encrypted_password") VALUES (?, ?, ?, ?)[0m  [["created_at", "2023-04-16 13:03:17.717558"], ["updated_at", "2023-04-16 13:03:17.717558"], ["email", "pedro@shift.com"], ["encrypted_password", "$2a$12$1AY9ie/pTgrAVNy141wXJ.rs7XtiTOpWjCnyHTmDoQZvZG1/NBPzy"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[36mcommit transaction[0m
+Redirected to http://localhost:3000/clients/2
+Completed 303 See Other in 293ms (ActiveRecord: 1.4ms | Allocations: 9217)
+
+
+Started GET "/clients/2" for ::1 at 2023-04-16 14:03:17 +0100
+Processing by ClientsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mFreelancer Load (0.1ms)[0m  [1m[34mSELECT "freelancers".* FROM "freelancers" WHERE "freelancers"."id" = ? ORDER BY "freelancers"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mClient Load (0.0ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/clients_controller.rb:43:in `set_client'
+Redirected to http://localhost:3000/clients
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 2422)
+
+
+Started GET "/clients" for ::1 at 2023-04-16 14:03:17 +0100
+Processing by ClientsController#index as HTML
+  [1m[36mFreelancer Load (0.0ms)[0m  [1m[34mSELECT "freelancers".* FROM "freelancers" WHERE "freelancers"."id" = ? ORDER BY "freelancers"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" WHERE "clients"."freelancer_id" = ?[0m  [["freelancer_id", 1]]
+  ↳ app/views/clients/index.html.erb:5
+  Rendered clients/index.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2176)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Freelancer"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/concerns/avatarable.rb:14:in `round_avatar'
+  Rendered layouts/_header_menu.html.erb (Duration: 2.3ms | Allocations: 2697)
+  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 8590)
+Completed 200 OK in 10ms (Views: 8.0ms | ActiveRecord: 0.5ms | Allocations: 10977)
+
+
+Started GET "/clients/new" for ::1 at 2023-04-16 14:03:19 +0100
+Processing by ClientsController#new as JS
+  [1m[36mFreelancer Load (0.4ms)[0m  [1m[34mSELECT "freelancers".* FROM "freelancers" WHERE "freelancers"."id" = ? ORDER BY "freelancers"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering clients/new.js.erb
+  Rendered clients/partials/_modal.html.erb (Duration: 3.5ms | Allocations: 1280)
+  Rendered clients/new.js.erb (Duration: 6.0ms | Allocations: 1754)
+Completed 200 OK in 21ms (Views: 14.1ms | ActiveRecord: 0.4ms | Allocations: 5426)
+
+
+Started POST "/clients" for ::1 at 2023-04-16 14:03:24 +0100
+Processing by ClientsController#create as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "client"=>{"name"=>"Teste", "phonenumber"=>"123124", "nif"=>"43215213"}, "commit"=>"Create"}
+  [1m[36mFreelancer Load (0.2ms)[0m  [1m[34mSELECT "freelancers".* FROM "freelancers" WHERE "freelancers"."id" = ? ORDER BY "freelancers"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+[31mUnpermitted parameters: :phonenumber, :nif[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/services/create_client_service.rb:13:in `call'
+  [1m[36mClient Create (0.6ms)[0m  [1m[32mINSERT INTO "clients" ("name", "freelancer_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["name", "Teste"], ["freelancer_id", 1], ["created_at", "2023-04-16 13:03:24.658854"], ["updated_at", "2023-04-16 13:03:24.658854"]]
+  ↳ app/services/create_client_service.rb:13:in `call'
+  [1m[36mClient Update (0.1ms)[0m  [1m[33mUPDATE "clients" SET "access_code" = ?, "updated_at" = ? WHERE "clients"."id" = ?[0m  [["access_code", "KPKFATEN"], ["updated_at", "2023-04-16 13:03:24.663112"], ["id", 1]]
+  ↳ app/models/client.rb:25:in `set_access_code'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/services/create_client_service.rb:13:in `call'
+Redirected to http://localhost:3000/clients
+Completed 302 Found in 14ms (ActiveRecord: 1.8ms | Allocations: 4847)
+
+
+Started GET "/clients" for ::1 at 2023-04-16 14:03:24 +0100
+Processing by ClientsController#index as HTML
+  [1m[36mFreelancer Load (0.2ms)[0m  [1m[34mSELECT "freelancers".* FROM "freelancers" WHERE "freelancers"."id" = ? ORDER BY "freelancers"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering clients/index.html.erb within layouts/application
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "clients" WHERE "clients"."freelancer_id" = ?[0m  [["freelancer_id", 1]]
+  ↳ app/views/clients/index.html.erb:5
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."freelancer_id" = ?[0m  [["freelancer_id", 1]]
+  ↳ app/views/clients/index.html.erb:15
+  [1m[36mActiveStorage::Attachment Load (0.1ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Client"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/concerns/avatarable.rb:14:in `round_avatar'
+  [1m[36mProject Load (0.2ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."client_id" = ?[0m  [["client_id", 1]]
+  ↳ app/models/client.rb:15:in `map'
+  Rendered clients/partials/_table_row.html.erb (Duration: 4.0ms | Allocations: 2815)
+  Rendered clients/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 4822)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mActiveStorage::Attachment Load (0.0ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_id" = ? AND "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? LIMIT ?[0m  [["record_id", 1], ["record_type", "Freelancer"], ["name", "avatar"], ["LIMIT", 1]]
+  ↳ app/models/concerns/avatarable.rb:14:in `round_avatar'
+  Rendered layouts/_header_menu.html.erb (Duration: 1.4ms | Allocations: 1127)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 9621)
+Completed 200 OK in 16ms (Views: 12.1ms | ActiveRecord: 1.0ms | Allocations: 11131)
+
+
+Started GET "/admin/client" for ::1 at 2023-04-16 14:03:26 +0100
+Processing by RailsAdmin::MainController#index as HTML
+  Parameters: {"model_name"=>"client"}
+  Rendering layout /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/application.html.erb
+  Rendering /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/rails_admin/main/index.html.erb within layouts/rails_admin/application
+  [1m[36mClient Load (0.3ms)[0m  [1m[34mSELECT "clients".* FROM "clients" ORDER BY clients.id desc LIMIT ? OFFSET ?[0m  [["LIMIT", 20], ["OFFSET", 0]]
+  [1m[36mFreelancer Load (0.2ms)[0m  [1m[34mSELECT "freelancers".* FROM "freelancers" WHERE "freelancers"."id" = ?[0m  [["id", 1]]
+  [1m[36mActiveStorage::Attachment Load (0.2ms)[0m  [1m[34mSELECT "active_storage_attachments".* FROM "active_storage_attachments" WHERE "active_storage_attachments"."record_type" = ? AND "active_storage_attachments"."name" = ? AND "active_storage_attachments"."record_id" = ?[0m  [["record_type", "Client"], ["name", "avatar"], ["record_id", 1]]
+  [1m[36mProject Load (0.1ms)[0m  [1m[34mSELECT "projects".* FROM "projects" WHERE "projects"."client_id" = ?[0m  [["client_id", 1]]
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/rails_admin/main/index.html.erb within layouts/rails_admin/application (Duration: 24.7ms | Allocations: 18965)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_head.html.erb (Duration: 2.3ms | Allocations: 2552)
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_secondary_navigation.html.erb (Duration: 0.3ms | Allocations: 365)
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_navigation.html.erb (Duration: 0.4ms | Allocations: 568)
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/_sidebar_navigation.html.erb (Duration: 2.0ms | Allocations: 3776)
+  Rendering /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/content.html.erb
+  Rendered /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/content.html.erb (Duration: 1.5ms | Allocations: 2140)
+  Rendered layout /Users/pedroribeiro/.rbenv/versions/2.7.3/lib/ruby/gems/2.7.0/gems/rails_admin-3.1.2/app/views/layouts/rails_admin/application.html.erb (Duration: 31.5ms | Allocations: 28563)
+Completed 200 OK in 34ms (Views: 31.4ms | ActiveRecord: 0.8ms | Allocations: 29686)
+
+
+Started POST "/api" for ::1 at 2023-04-16 14:03:42 +0100
+  
+ActionController::RoutingError (No route matches [POST] "/api"):
+  
+Started POST "/apis" for ::1 at 2023-04-16 14:04:19 +0100
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 643)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.1.7.3) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.1.7.3) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+devise (4.9.2) lib/devise/controllers/helpers.rb:255:in `handle_unverified_request'
+actionpack (6.1.7.3) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+actionpack (6.1.7.3) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:512:in `block in invoke_before'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:512:in `each'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:512:in `invoke_before'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:115:in `block in run_callbacks'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:137:in `run_callbacks'
+actionpack (6.1.7.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.7.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.7.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.7.3) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.7.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.7.3) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.7.3) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.7.3) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.7.3) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.7.3) lib/abstract_controller/base.rb:165:in `process'
+actionview (6.1.7.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.6.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.6.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.6.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.6.4) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.6.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.6.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/apis" for ::1 at 2023-04-16 14:05:15 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 0ms (ActiveRecord: 0.0ms | Allocations: 459)
+
+
+  
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  
+actionpack (6.1.7.3) lib/action_controller/metal/request_forgery_protection.rb:211:in `handle_unverified_request'
+actionpack (6.1.7.3) lib/action_controller/metal/request_forgery_protection.rb:243:in `handle_unverified_request'
+devise (4.9.2) lib/devise/controllers/helpers.rb:255:in `handle_unverified_request'
+actionpack (6.1.7.3) lib/action_controller/metal/request_forgery_protection.rb:238:in `verify_authenticity_token'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:198:in `block (2 levels) in halting'
+actionpack (6.1.7.3) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:199:in `block in halting'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:512:in `block in invoke_before'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:512:in `each'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:512:in `invoke_before'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:115:in `block in run_callbacks'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:137:in `run_callbacks'
+actionpack (6.1.7.3) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (6.1.7.3) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (6.1.7.3) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (6.1.7.3) lib/active_support/notifications.rb:203:in `block in instrument'
+activesupport (6.1.7.3) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (6.1.7.3) lib/active_support/notifications.rb:203:in `instrument'
+actionpack (6.1.7.3) lib/action_controller/metal/instrumentation.rb:33:in `process_action'
+actionpack (6.1.7.3) lib/action_controller/metal/params_wrapper.rb:249:in `process_action'
+activerecord (6.1.7.3) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (6.1.7.3) lib/abstract_controller/base.rb:165:in `process'
+actionview (6.1.7.3) lib/action_view/rendering.rb:39:in `process'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (6.1.7.3) lib/action_controller/metal.rb:254:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:33:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (6.1.7.3) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (6.1.7.3) lib/action_dispatch/routing/route_set.rb:842:in `call'
+warden (1.2.9) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.9) lib/warden/manager.rb:34:in `catch'
+warden (1.2.9) lib/warden/manager.rb:34:in `call'
+rack (2.2.6.4) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.6.4) lib/rack/etag.rb:27:in `call'
+rack (2.2.6.4) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.6.4) lib/rack/head.rb:12:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/http/permissions_policy.rb:22:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/http/content_security_policy.rb:19:in `call'
+rack (2.2.6.4) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.6.4) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/cookies.rb:697:in `call'
+activerecord (6.1.7.3) lib/active_record/migration.rb:601:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (6.1.7.3) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/actionable_exceptions.rb:18:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/debug_exceptions.rb:29:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.1.7.3) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (6.1.7.3) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (6.1.7.3) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.6.4) lib/rack/method_override.rb:24:in `call'
+rack (2.2.6.4) lib/rack/runtime.rb:22:in `call'
+activesupport (6.1.7.3) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/static.rb:24:in `call'
+rack (2.2.6.4) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.1.7.3) lib/action_dispatch/middleware/host_authorization.rb:148:in `call'
+rack-mini-profiler (2.3.4) lib/mini_profiler/profiler.rb:393:in `call'
+webpacker (5.4.4) lib/webpacker/dev_server_proxy.rb:25:in `perform_request'
+rack-proxy (0.7.6) lib/rack/proxy.rb:87:in `call'
+railties (6.1.7.3) lib/rails/engine.rb:539:in `call'
+puma (5.6.5) lib/puma/configuration.rb:252:in `call'
+puma (5.6.5) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.5) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.5) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.5) lib/puma/server.rb:443:in `process_client'
+puma (5.6.5) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started POST "/apis" for ::1 at 2023-04-16 14:06:06 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 15ms (Views: 0.1ms | ActiveRecord: 0.6ms | Allocations: 6728)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:07:01 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 860)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:07:05 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 860)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:07:20 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 843)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:07:54 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.1ms | Allocations: 857)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:08:12 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 843)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:09:33 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.8ms | Allocations: 3822)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:10:49 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>nil}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" IS NULL LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms | Allocations: 841)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:10:55 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>"KPKFATEN"}
+  [1m[36mClient Load (0.2ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" = ? LIMIT ?[0m  [["access_code", "KPKFATEN"], ["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 6ms (Views: 0.1ms | ActiveRecord: 0.4ms | Allocations: 4219)
+
+
+Started POST "/apis" for ::1 at 2023-04-16 14:11:31 +0100
+Processing by ApisController#create as */*
+  Parameters: {"access_code"=>"KPKFATEN"}
+  [1m[36mClient Load (0.1ms)[0m  [1m[34mSELECT "clients".* FROM "clients" WHERE "clients"."access_code" = ? LIMIT ?[0m  [["access_code", "KPKFATEN"], ["LIMIT", 1]]
+  ↳ app/controllers/apis_controller.rb:8:in `create'
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.1ms | Allocations: 716)
+
+

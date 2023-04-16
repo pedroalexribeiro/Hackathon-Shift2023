@@ -1,0 +1,31 @@
+<!-- Modal -->
+<%= form_for(@project, url: client_projects_path, method: :post) do |form| %>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Project</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="form-control">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+          </div>
+          <div class="form-control">
+            <%= form.label :category %>
+            <%= form.text_field :category %>
+          </div>
+          <div class="form-control">
+            <%= form.label :deadline %>
+            <%= form.date_field :deadline %>
+          </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= form.submit "Create", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>
