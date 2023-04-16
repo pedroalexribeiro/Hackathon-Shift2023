@@ -14,5 +14,6 @@
 
   <% @client.projects.each do |project| %>
     <%= render 'projects/partials/table_row', project: project %>
+    <hr class="solid">
   <% end %>
 </div>

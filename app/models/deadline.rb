@@ -3,7 +3,7 @@ class Deadline < ApplicationRecord
 
   belongs_to :project
 
-  has_many_attached :documents
+  has_many :documents
 
-  enum status: { ready: 0, going: 1, finalised: 2 }
+  enum status: { ready: 0, going: 1, finalised: 2 }, _default: :going
 end

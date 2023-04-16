@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class NotesController < ApplicationController
+  before_action :set_notable
   before_action :set_all_notes
 
   def new
@@ -13,12 +14,11 @@ class NotesController < ApplicationController
   end
 
   def create
-    set_notable
     service = CreateNoteService.call(notes_params, current_freelancer, @notable)
 
     if service.valid?
       @client = service.result[:value]
-      # should refresh the page
+      redirect_to client_project_path(@notable.project.client, @notable.project)
     else
       flash[:alert] = service.errors
     end
@@ -31,7 +31,7 @@ class NotesController < ApplicationController
   end
 
   def set_all_notes
-    @notes = Note.all
+    @notes = Note.where(notable: @notable)
   end
 
   def set_notable

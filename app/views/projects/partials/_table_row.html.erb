@@ -1,10 +1,11 @@
 
-<div class="row" styles="display: flex; align-items: center;cursor: pointer;" onclick="window.location.assign('<%= (client_project_path(project)) %>');">
+<div class="row" styles="display: flex; align-items: center;cursor: pointer;" onclick="window.location.assign('<%= (client_project_path(@client, project)) %>');">
   <div class="col visible_avatar" style="display:inline-flex;">
-    <%= image_tag project.round_avatar, class: "avatar avatar-16 bg-light rounded-circle text-white p-1" %>
+    <i class="bi bi-file"></i>
     <span style="font-weight: bold;font-size: 20px;margin-left:10px;"><%= project.name %>, <%= project.category %></span>
   </div>
   <div class="col ml-auto">
-    <span>Deadline <%= project.deadline&.strftime('%d %b %Y') %></span>
+    <span>Deadline <%= project.deadline&.strftime('%d %b %Y') %>, </span>
+    <span>Activity <%= project.status.capitalize %></span>
   </div>
 </div>

@@ -1,22 +1,22 @@
 <!-- Modal -->
   <div class="modal-dialog" role="document">
-    <%= form_for(@note, url: notes_path, method: :post) do |form| %>
+    <%= form_for(@document, url: documents_path, method: :post) do |form| %>
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Create Note</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Create Document</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
-            <% @notes.each do |note| %>
+            <% @documents.each do |document| %>
               <div class="container">
-                <p><%= "#{note.author.visible_name}: #{note.content}" %></p>
+                <p><%= "#{document.name}" %></p>
               </div>
             <% end %>
           <div class="form-control">
-            <%= form.label :content %>
-            <%= form.text_field :content %>
+            <%= form.label :file %>
+            <%= form.file_field :file %>
           </div>
           </div>
           <div class="modal-footer">

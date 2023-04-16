@@ -42,6 +42,8 @@ ActiveRecord::Schema.define(version: 2023_04_15_223904) do
 
   create_table "clients", force: :cascade do |t|
     t.string "name"
+    t.string "phonenumber"
+    t.string "nif"
     t.integer "freelancer_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -55,6 +57,18 @@ ActiveRecord::Schema.define(version: 2023_04_15_223904) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["project_id"], name: "index_deadlines_on_project_id"
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.text "name"
+    t.string "source_type", null: false
+    t.integer "source_id", null: false
+    t.string "author_type", null: false
+    t.integer "author_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["author_type", "author_id"], name: "index_documents_on_author"
+    t.index ["source_type", "source_id"], name: "index_documents_on_source"
   end
 
   create_table "freelancers", force: :cascade do |t|

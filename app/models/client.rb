@@ -10,10 +10,11 @@ class Client < ApplicationRecord
   end
 
   def finalised_projects
-    projects.where('status <> ?', Project.statuses[:finalised])
+    projects.map{|p| p if p.finalised?}.compact
   end
 
   def ongoing_projects
-    projects.where('status <> ?', Project.statuses[:going])
+    # projects.where(status: Project.statuses[:going])
+    projects.map{|p| p if p.going?}.compact
   end
 end

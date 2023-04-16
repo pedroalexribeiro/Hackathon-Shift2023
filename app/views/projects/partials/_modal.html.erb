@@ -9,9 +9,19 @@
         </button>
       </div>
       <div class="modal-body">
-        <%= form.text_field :name %>
-        
-      </div>
+          <div class="form-control">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+          </div>
+          <div class="form-control">
+            <%= form.label :category %>
+            <%= form.text_field :category %>
+          </div>
+          <div class="form-control">
+            <%= form.label :deadline %>
+            <%= form.date_field :deadline %>
+          </div>
+        </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <%= form.submit "Create", class: "btn btn-primary" %>

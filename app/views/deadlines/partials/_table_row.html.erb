@@ -1,11 +1,13 @@
 
 <div class="row" styles="display: flex; align-items: center;">
   <div class="col">
-    <% if deadline.finalised? %>
-      <i class="bi bi-check-circle-fill"></i>
-    <% else %>
-      <i class="bi bi-check-circle"></i>
-    <% end %>
+    <a href="<%= client_project_deadline_path(@client, @project, deadline) %>">
+      <% if deadline.finalised? %>
+        <i class="bi bi-check-circle-fill"></i>
+      <% else %>
+        <i class="bi bi-check-circle"></i>
+      <% end %>
+    </a>
   </div>
   <div class="col">
     <span><%= deadline.name %></span>
@@ -14,18 +16,18 @@
     <%= link_to "Notes", new_note_path(deadline.class.name.downcase, deadline.id), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
   </div>
   <div class="col">
-    <%= link_to "Documents", new_client_project_deadline_path(@client, @project), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
+    <%= link_to "Documents", new_document_path(deadline.class.name.downcase, deadline.id), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
   </div>
   <div class="col ml-auto">
     <div class="row">
       <div class="col">
-        <i class="bi bi-check-circle"></i>
+        <i class="bi bi-stop-fill"></i>
       </div>
       <div class="col">
-        <i class="bi bi-check-circle"></i>
+        <i class="bi bi-play"></i>
       </div>
       <div class="col">
-        3:30
+        0:00
       </div>
     </div>
   </div>

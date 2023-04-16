@@ -9,8 +9,18 @@
           </button>
         </div>
         <div class="modal-body">
-          <%= form.text_field :name %>
-          
+          <div class="form-control">
+            <%= form.label :name %>
+            <%= form.text_field :name %>
+          </div>
+          <div class="form-control">
+            <%= form.label :phonenumber %>
+            <%= form.text_field :phonenumber %>
+          </div>
+          <div class="form-control">
+            <%= form.label :nif %>
+            <%= form.text_field :nif %>
+          </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

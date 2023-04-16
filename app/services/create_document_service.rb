@@ -10,6 +10,7 @@ class CreateDocumentService < ApplicationService
 
   def call
     document = Document.new(params)
+    document.name = params[:file].original_filename
     document.author = author
     # Workaround for passing params from the FE
     document.source = source

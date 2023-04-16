@@ -12,5 +12,7 @@ Rails.application.routes.draw do
   resources :freelancers
   get '/:notable_type/:notable_id/note', to: 'notes#new', as: :new_note
   post '/:notable_type/:notable_id/note', to: 'notes#create', as: :notes
-  resources :documents
+
+  get '/:source_type/:source_id/document', to: 'documents#new', as: :new_document
+  post '/:source_type/:source_id/document', to: 'documents#create', as: :documents
 end

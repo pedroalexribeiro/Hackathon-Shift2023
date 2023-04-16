@@ -23,10 +23,8 @@ class ProjectsController < ApplicationController
     service = CreateProjectService.call(@client, project_params)
 
     if service.valid?
-      @client = service.result[:value]
-      respond_to do |format|
-        format.html { redirect_to clients_path }
-      end
+      @project = service.result[:value]
+      redirect_to client_path(@client)
     else
       flash[:alert] = service.errors
     end
@@ -37,7 +35,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name)
+    params.require(:project).permit(:name, :category, :deadline)
   end
 
   def set_project
