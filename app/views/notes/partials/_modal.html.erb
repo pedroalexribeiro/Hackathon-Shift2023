@@ -11,12 +11,19 @@
           <div class="modal-body">
             <% @notes.each do |note| %>
               <div class="container">
-                <p><%= "#{note.author.visible_name}: #{note.content}" %></p>
+                <% if note.change %>
+                  <span><i class="bi bi-exclamation-lg"></i></span>
+                <% end %>
+                <%= "#{note.author.visible_name}: #{note.content}" %>
               </div>
             <% end %>
           <div class="form-control">
             <%= form.label :content %>
             <%= form.text_field :content %>
+          </div>
+          <div class="form-control">
+            <%= form.label :change? %>
+            <%= form.check_box :change %>
           </div>
           </div>
           <div class="modal-footer">

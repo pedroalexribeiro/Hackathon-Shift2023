@@ -4,6 +4,7 @@ class CreateNotes < ActiveRecord::Migration[6.1]
       t.text :content
       t.references :notable, polymorphic: true, null: false
       t.references :author, polymorphic: true, null: false
+      t.boolean :change, default: false
 
       t.timestamps
     end

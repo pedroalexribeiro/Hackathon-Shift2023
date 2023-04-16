@@ -90,6 +90,7 @@ ActiveRecord::Schema.define(version: 2023_04_15_223904) do
     t.integer "notable_id", null: false
     t.string "author_type", null: false
     t.integer "author_id", null: false
+    t.boolean "change", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["author_type", "author_id"], name: "index_notes_on_author"

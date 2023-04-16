@@ -27,7 +27,7 @@ class NotesController < ApplicationController
   private
 
   def notes_params
-    params.require(:note).permit(:content)
+    params.require(:note).permit(:content, :change)
   end
 
   def set_all_notes
