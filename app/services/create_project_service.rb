@@ -10,7 +10,7 @@ class CreateProjectService < ApplicationService
   def call
     project = Project.new(params)
     project.client = client
-    raise CreateClientServiceError unless project.save
+    raise CreateProjectServiceError unless project.save
 
     result[:value] = project
   end

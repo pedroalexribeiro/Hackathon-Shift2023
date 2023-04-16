@@ -1,1 +1,26 @@
+.visible_avatar{
+  display: flex;
+  align-items: center;
+}
 
+#example {
+  top: 50%;
+  left: 50%;
+  width: 30em;
+  height: 18em;
+  margin-top: -9em;
+  margin-left: -15em;
+  border: 1px solid #009000;
+  background-color: white;
+  position: fixed;
+}
+
+html, body {
+  height: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+table td:last-child { width: 100px; }

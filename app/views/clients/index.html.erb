@@ -1,30 +1,18 @@
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h3><%= current_freelancer.clients.size %> Clients</h3>
-    </div>
-    <div class="col">
-      <%= link_to "Add Client", new_client_path, remote: true, class: "btn btn-#{current_freelancer.clients.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
-      <%#= render "clients/partials/add_client" %>
+  <div class="container" style="padding:15px;">
+    <div class="row">
+      <div class="col">
+        <h3>Clients(<%= current_freelancer.clients.size %>)</h3>
+      </div>
+      <div class="ml-auto">
+        <%= link_to "Add Client", new_client_path, remote: true, class: "btn btn-primary btn-xs-fixed m-xs-0", style: "background-color: green;" %>
+      </div>
     </div>
   </div>
-</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">Last Activity</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% current_freelancer.clients.each do |client|%>
-      <tr onclick="window.location.assign('<%= (client_path(client)) %>');">
-        <th scope="row"><%= client.id %></th>
-        <td><%= client.name %></td>
-        <td><%= "12/04/23" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+  <hr class="solid">
+
+  <% current_freelancer.clients.each do |client| %>
+    <%= render 'clients/partials/table_row', client: client %>
+  <% end %>
+</div>

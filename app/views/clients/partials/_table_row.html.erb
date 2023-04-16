@@ -1,0 +1,16 @@
+
+<div class="row" styles="display: flex; align-items: center;cursor: pointer;" onclick="window.location.assign('<%= (client_path(client)) %>');">
+  <div class="col visible_avatar" style="display:inline-flex;">
+    <%= image_tag client.round_avatar, class: "avatar avatar-16 bg-light rounded-circle text-white p-3" %>
+    <span style="font-weight: bold;font-size: 20px;margin-left:10px;"><%= client.name %></span>
+  </div>
+  <div class="col">
+    <span><%= client.finalised_projects.size.to_s + " " + "Project".pluralize(client.finalised_projects.size) + " finalised" %></span>
+  </div>
+  <div class="col">
+    <span><%= client.ongoing_projects.size.to_s + " " + "Project".pluralize(client.ongoing_projects.size) + " on going" %></span>
+  </div>
+  <div class="col ml-auto">
+    <span>Activity <%= client.updated_at.strftime('%d %b %y') %></span>
+  </div>
+</div>

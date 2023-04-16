@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   root 'clients#index'
 
   resources :clients do
-    resources :projects
+    resources :projects do
+      resources :deadlines
+    end
   end
   resources :freelancers
 end

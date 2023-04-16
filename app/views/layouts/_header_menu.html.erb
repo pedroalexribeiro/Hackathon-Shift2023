@@ -1,15 +1,22 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-light bg-light">
   <a class="navbar-brand" href="#">Mesmodder</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-    </ul>
-    <ul class="navbar-nav ml-auto">
-      <li class="my-2 my-lg-0">
-        <%= current_freelancer.name || "Jorge" %>
-      </li>
-    </ul>
+
+  <div class="navbar-nav ml-auto">
+    <div class="my-2 row">
+      <div class="col" style="border:1px solid green;">
+        <i class="bi bi-chat-left-text"></i>
+      </div>
+      <div class="col" style="border:1px solid green;">
+        <i class="bi bi-bar-chart-line"></i>
+      </div>
+      <div class="col" style="border:1px solid green;">
+        <i class="bi bi-bell"></i>
+      </div>
+      <div class="col visible_avatar" style="display:inline-flex;border:1px solid green;">
+        <%= image_tag current_freelancer.round_avatar, class: "avatar avatar-16 bg-light rounded-circle text-white p-1" %>
+        <span styles="font-weight: bold;"><%= current_freelancer.visible_name %></span>
+      </div>
+      <%= link_to "Sign Out", destroy_freelancer_session_path, method: :delete %>
+    </div>
   </div>
 </nav>

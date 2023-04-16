@@ -1,28 +1,18 @@
 
-<div class="row">
-  <div class="col">
-    <h3><%= @client.projects.size %> Projects</h3>
+<div class="container" style="padding:15px;">
+  <div class="row">
+    <div class="col visible_avatar" style="display:inline-flex;">
+      <%= image_tag @client.round_avatar, class: "avatar avatar-16 bg-light rounded-circle text-white p-3" %>
+      <span style="font-weight: bold;font-size: 20px;margin-left:10px;"><%= @client.name %></span>
+    </div>
+    <div class="ml-auto">
+      <%= link_to "Add Project", new_client_project_path(@client), remote: true, class: "btn btn-primary btn-xs-fixed m-xs-0", style: "background-color: green;" %>
+    </div>
   </div>
-  <div class="col">
-      <%= link_to "Add Project", new_client_project_path(@client), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
-  </div>
-</div>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Name</th>
-      <th scope="col">State</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @client.projects.each do |project|%>
-        <tr>
-          <th scope="row"><%= project.id %></th>
-          <td><%= project.name %></td>
-          <td><%= "Done" %></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+  <hr class="solid">
+
+  <% @client.projects.each do |project| %>
+    <%= render 'projects/partials/table_row', project: project %>
+  <% end %>
+</div>
