@@ -15,5 +15,5 @@ class CreateProjectService < ApplicationService
     result[:value] = project
   end
 
-  class CreateProjectServiceError; end
+  class CreateProjectServiceError < BaseError; end
 end

@@ -15,5 +15,5 @@ class CreateDeadlineService < ApplicationService
     result[:value] = deadline
   end
 
-  class CreateDeadlineServiceError; end
+  class CreateDeadlineServiceError < BaseError; end
 end

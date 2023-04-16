@@ -1,18 +1,22 @@
 class CreateDocumentService < ApplicationService
-  attr_accessor :source, :params
+  attr_accessor :params, :author, :source
 
-  def initialize(source, params)
+  def initialize(params, author, source)
     super()
-    @source = source
     @params = params
+    @author = author
+    @source = source
   end
 
   def call
     document = Document.new(params)
+    document.author = author
+    # Workaround for passing params from the FE
+    document.source = source
     raise CreateDocumentServiceError unless document.save
 
     result[:value] = document
   end
 
-  class CreateDocumentServiceError; end
+  class CreateDocumentServiceError < BaseError; end
 end

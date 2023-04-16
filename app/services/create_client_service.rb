@@ -15,5 +15,5 @@ class CreateClientService < ApplicationService
     result[:value] = client
   end
 
-  class CreateClientServiceError; end
+  class CreateClientServiceError < BaseError; end
 end

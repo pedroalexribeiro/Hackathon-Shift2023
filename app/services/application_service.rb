@@ -14,6 +14,10 @@ class ApplicationService
     service
   end
 
+  def self.handle_error(errors)
+    puts errors
+  end
+
   def initialize
     @errors = []
     @result = ActiveSupport::HashWithIndifferentAccess.new
@@ -31,9 +35,6 @@ class ApplicationService
     errors.empty?
   end
 
-  def handle_error(errors)
-    puts errors
-  end
 
   class BaseError < StandardError; end
 end

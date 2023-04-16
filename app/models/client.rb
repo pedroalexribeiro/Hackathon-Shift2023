@@ -5,6 +5,10 @@ class Client < ApplicationRecord
 
   has_many :projects
 
+  def visible_name
+    name || 'Antonio'
+  end
+
   def finalised_projects
     projects.where('status <> ?', Project.statuses[:finalised])
   end

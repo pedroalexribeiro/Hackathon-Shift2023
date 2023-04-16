@@ -72,11 +72,14 @@ ActiveRecord::Schema.define(version: 2023_04_15_223904) do
 
   create_table "notes", force: :cascade do |t|
     t.text "content"
-    t.string "commentable_type", null: false
-    t.integer "commentable_id", null: false
+    t.string "notable_type", null: false
+    t.integer "notable_id", null: false
+    t.string "author_type", null: false
+    t.integer "author_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_notes_on_commentable"
+    t.index ["author_type", "author_id"], name: "index_notes_on_author"
+    t.index ["notable_type", "notable_id"], name: "index_notes_on_notable"
   end
 
   create_table "projects", force: :cascade do |t|

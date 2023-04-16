@@ -10,4 +10,7 @@ Rails.application.routes.draw do
     end
   end
   resources :freelancers
+  get '/:notable_type/:notable_id/note', to: 'notes#new', as: :new_note
+  post '/:notable_type/:notable_id/note', to: 'notes#create', as: :notes
+  resources :documents
 end

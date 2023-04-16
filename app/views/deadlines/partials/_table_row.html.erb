@@ -11,7 +11,7 @@
     <span><%= deadline.name %></span>
   </div>
   <div class="col">
-    <%= link_to "Notes", new_client_project_deadline_path(@client, @project), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
+    <%= link_to "Notes", new_note_path(deadline.class.name.downcase, deadline.id), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
   </div>
   <div class="col">
     <%= link_to "Documents", new_client_project_deadline_path(@client, @project), remote: true, class: "btn btn-#{@client.projects.empty? ? 'secondary' : 'default'} btn-xs-fixed m-xs-0" %>
