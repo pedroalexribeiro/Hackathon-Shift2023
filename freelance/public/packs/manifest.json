@@ -17,6 +17,22 @@
       "js.map": [
         "/packs/js/rails_admin-d1425ca6c49acf5466c9.js.map"
       ]
+    },
+    "sessions_new": {
+      "js": [
+        "/packs/js/sessions_new-c93a025d6de1b7408379.js"
+      ],
+      "js.map": [
+        "/packs/js/sessions_new-c93a025d6de1b7408379.js.map"
+      ]
+    },
+    "users_new": {
+      "js": [
+        "/packs/js/users_new-cc86ab6fc04fc75f5167.js"
+      ],
+      "js.map": [
+        "/packs/js/users_new-cc86ab6fc04fc75f5167.js.map"
+      ]
     }
   },
   "media/webfonts/fa-solid-900.eot": "/packs/media/webfonts/fa-solid-900-9bbb245e.eot",
@@ -26,6 +42,10 @@
   "media/webfonts/fa-solid-900.woff2": "/packs/media/webfonts/fa-solid-900-1551f4f6.woff2",
   "rails_admin.js": "/packs/js/rails_admin-d1425ca6c49acf5466c9.js",
   "rails_admin.js.map": "/packs/js/rails_admin-d1425ca6c49acf5466c9.js.map",
+  "sessions_new.js": "/packs/js/sessions_new-c93a025d6de1b7408379.js",
+  "sessions_new.js.map": "/packs/js/sessions_new-c93a025d6de1b7408379.js.map",
+  "users_new.js": "/packs/js/users_new-cc86ab6fc04fc75f5167.js",
+  "users_new.js.map": "/packs/js/users_new-cc86ab6fc04fc75f5167.js.map",
   "vendors~actioncable.js": "/packs/js/vendors~actioncable-7a18723a7d6422f7448f.chunk.js",
   "vendors~actioncable.js.map": "/packs/js/vendors~actioncable-7a18723a7d6422f7448f.chunk.js.map"
 }

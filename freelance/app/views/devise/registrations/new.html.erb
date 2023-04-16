@@ -9,21 +9,14 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.label :eth_address %><br />
+    <%= f.text_field :eth_address, readonly: true, class: "eth_address" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class: "eth_connect" %>
   </div>
 <% end %>
 
+<%= javascript_pack_tag "users_new" %>
 <%= render "devise/shared/links" %>

@@ -1,13 +1,16 @@
 class Freelancer < ApplicationRecord
   include Concerns::Avatarable
 
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-
   has_many :clients
   has_many :projects, through: :clients
+
+  before_create :set_nounce
+
+  attr_accessor :eth_message, :eth_signature
+
+  def set_nounce
+    self.eth_nonce = SecureRandom.uuid
+  end
 
   def visible_name
     name || 'Jorge'

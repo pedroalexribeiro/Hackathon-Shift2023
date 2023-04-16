@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 2023_04_15_223904) do
   create_table "freelancers", force: :cascade do |t|
     t.string "name"
     t.string "brand_name", default: "MesModder"
+    t.string "eth_nonce"
+    t.string "eth_address"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "email", default: "", null: false

@@ -1,0 +1,17 @@
+<h2>Sign up</h2>
+
+<%= form_for(Freelancer.new, url: registrations_path) do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :eth_address %><br />
+    <%= f.text_field :eth_address, class: "eth_address" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Sign up", class: "eth_connect" %>
+  </div>
+<% end %>

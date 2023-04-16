@@ -1,0 +1,29 @@
+<div class="container">
+  <%= form_for(Freelancer.new, url: sessions_path) do |f| %>
+    <div id="example" class="form-group">
+      <div class="form-field">
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "user@freelancer.com" %>
+      </div>
+
+      <div class="form-field">
+        <%= f.text_field :eth_message, readonly: true, class: "eth_message" %> <br />
+      </div>
+      <div class="form-field">
+
+        <%= f.text_field :eth_address, readonly: true, class: "eth_address" %> <br />
+      </div>
+      <div class="form-field">
+
+        <%= f.text_field :eth_signature, readonly: true, class: "eth_signature" %> <br />
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Login with Ethereum", class: "btn btn-primary eth_connect", style:"background-color: green;" %>
+      </div>
+
+    </div>
+  <% end %>
+  <%= link_to "Sign up", new_registration_path %>
+  <%= javascript_pack_tag "sessions_new" %>
+</div>
+
